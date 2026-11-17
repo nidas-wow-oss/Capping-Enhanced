@@ -1,8 +1,0 @@
-## Interface: 30300
-## Title: Capping [Options]
-## Notes: Capping options panel, loaded only when opened.
-## Author: TotalPackage
-## Dependencies: Capping
-## LoadOnDemand: 1
-
-options.lua

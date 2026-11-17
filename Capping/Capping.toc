@@ -25,4 +25,6 @@ locals\localization-zhCN.lua
 locals\localization-zhTW.lua
 
 core.lua
+battlegrounds.lua
+options.lua
 

@@ -369,15 +369,12 @@ function Capping:ResetAll()
 	if HCountText then HCountText:SetText("") end
 end
 
-local bgWarned
 local function LoadBGModule()
 	if Capping.StartAB then return true end
-	local loaded, reason = LoadAddOn("Capping_Battlegrounds")
-	if Capping.StartAB then return true end
-	if not bgWarned then
-		bgWarned = true
-		DEFAULT_CHAT_FRAME:AddMessage("|cff5555ffCapping|r: could not load Capping_Battlegrounds ("..tostring(reason or "missing")..").")
-	end
+	local run = Capping.RunBGPart
+	Capping.RunBGPart = nil
+	if run then run() end
+	return Capping.StartAB and true or false
 end
 
 function Capping:ZoneCheck()
@@ -968,17 +965,12 @@ Capping.priv = {
 	GetMapTab = function() return bgtab end,
 }
 
-local optWarned
 function ShowOptions(a1, id)
 	if not Capping.OpenOptions then
-		local loaded, reason = LoadAddOn("Capping_Options")
-		if not loaded or not Capping.OpenOptions then
-			if not optWarned then
-				optWarned = true
-				DEFAULT_CHAT_FRAME:AddMessage("|cff5555ffCapping|r: could not load Capping_Options ("..tostring(reason or "missing")..").")
-			end
-			return
-		end
+		local run = Capping.RunOptionsPart
+		Capping.RunOptionsPart = nil
+		if run then run() end
+		if not Capping.OpenOptions then return end
 	end
 	Capping.OpenOptions(a1, id)
 end

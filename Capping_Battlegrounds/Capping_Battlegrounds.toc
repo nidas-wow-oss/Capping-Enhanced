@@ -1,8 +1,0 @@
-## Interface: 30300
-## Title: Capping [Battlegrounds]
-## Notes: Capping battleground timers, loaded only inside battlegrounds and Wintergrasp.
-## Author: TotalPackage
-## Dependencies: Capping
-## LoadOnDemand: 1
-
-battlegrounds.lua
